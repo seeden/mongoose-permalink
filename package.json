@@ -1,0 +1,35 @@
+{
+	"name": "mongoose-permalink",
+	"version": "1.0.0",
+	"description": "Create automatically slug permalink in your mongoose models",
+	"author": {
+		"name": "Zlatko Fedor",
+		"email": "zfedor@gmail.com",
+		"url": "http://www.cherrysro.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/seeden/maglev.git"
+	},
+	"keywords": [
+		"mongoose",
+		"permalink",
+		"unique",
+		"slug"
+	],
+	"private": false,
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://www.opensource.org/licenses/MIT"
+		}
+	],
+	"main": "./lib/",
+	"engines": {
+		"node": ">= 0.10.0"
+	},
+	"dependencies": {
+		"puid": "~0.5.4",
+		"speakingurl": "~0.9.1"
+	}
+}

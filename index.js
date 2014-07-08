@@ -1,3 +1,5 @@
+'use strict';
+
 var getSlug = require('speakingurl');
 var Puid = require('puid');
 

@@ -13,7 +13,7 @@ function generatePermalink(doc, sources, maxLength) {
 	var permalink = null;
 
 	for(var i=0; i<sources.length; i++) {
-		var value = doc[sources[i]];
+		var value = doc.get(sources[i], String);
 
 		if(!value || isBlank(value)) {
 			continue;

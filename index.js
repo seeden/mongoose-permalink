@@ -73,7 +73,7 @@ module.exports = function permalinkPlugin (schema, options) {
 	
 	//prepare schema
 	var schemaData = {};
-	schemaData[target] = { type: String, unique: true, required: true };
+	schemaData[target] = { type: String, trim: true, unique: true, required: true };
 
 	schema.add(schemaData);
 	schema.pre('validate', function (next) {

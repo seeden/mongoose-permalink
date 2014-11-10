@@ -78,12 +78,19 @@ module.exports = function permalinkPlugin (schema, options) {
 
 	//prepare parameters
 	var path = options.path || 'permalink',
+		pathOptions = options.pathOptions || {},
 		sources = options.sources || ['name'],
 		maxLength = options.maxLength || 50,
 		separator = options.separator || '-';
+
+	//prepare path options;
+	pathOptions.type = String;
+	pathOptions.trim = true;
+	pathOptions.unique = true;
+	pathOptions.required = true;
 	
 	//prepare schema
-	schema.path(path, { type: String, trim: true, unique: true, required: true });
+	schema.path(path, pathOptions);
 
 	schema.pre('validate', function (next) {
 		var _this = this,

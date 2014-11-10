@@ -1,6 +1,6 @@
 {
 	"name": "mongoose-permalink",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "Create automatically slug permalink in your mongoose models",
 	"author": {
 		"name": "Zlatko Fedor",

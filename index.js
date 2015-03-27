@@ -28,7 +28,7 @@ function generatePermalink(doc, sources, maxLength) {
 
 	for(var i=0; i<sources.length; i++) {
 		var value = doc.get(sources[i]);
-		if(!value || isBlank(value)) {
+		if(isBlank(value)) {
 			continue;
 		}
 
@@ -46,8 +46,8 @@ function generatePermalink(doc, sources, maxLength) {
 }
 
 function getNextPermalink(doc, model, path, permalink, separator, cb) {
-	var version = '',
-		conditions = pathToSubdocument(path, permalink);
+	var version = '';
+	var conditions = pathToSubdocument(path, permalink);
 
 	//if there is empty permalink
 	if(isBlank(permalink)) {

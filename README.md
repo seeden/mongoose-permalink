@@ -14,57 +14,66 @@ There is several plugins with very similar functionality. But I have these condi
 
 ## Install
 
-	$ npm install mongoose-permalink
+```sh
+npm install mongoose-permalink
+```
 
 ## Options
 
 Plugin has several optional parameters:
- * target - Name of key in a schema (default: 'permalink')
- * sources - List of keys of a document from which is the permalink computed (default: 'name')
- * maxLength - Max length of permalink (default: 50)
- * separator - Separator is used when slag already exists (default: '-')
+ * path - Name of key in a schema (default 'permalink')
+ * sources - List of keys of a document from which is the permalink computed (default 'name')
+ * operation 
+ 	- GRAB_FIRST - will use first non blank value (default 'GRAB_FIRST') 
+ 	- CONCAT - will concat all non blank values
+ * slug - additional options from plugin [speakingurl](https://www.npmjs.com/package/speakingurl) 
+ 	- separator - char that replace the whitespaces (default '-')
+ 	- truncate - trim to max length while not breaking any words (default 50)
+ 	- ... 
 
 ## Usage
 
-	var mongoose = require('mongoose');
-	var permalink = require('mongoose-permalink');
+```js
+var mongoose = require('mongoose');
+var permalink = require('mongoose-permalink');
 
-	var userSchema = new Schema({
-		name     : { type: String },
-		username : { type: String }
-	});
-
-
-	userSchema.plugin(permalink, {
-		sources: ['name', 'username']
-	});
+var userSchema = new Schema({
+	name     : { type: String },
+	username : { type: String }
+});
 
 
-	var User = mongoose.model('User', userSchema);
+userSchema.plugin(permalink, {
+	sources: ['name', 'username']
+});
 
-	var user = new User({
-		name: 'Peter'
-	});
 
-	user.save(function(err, user) {
-		console.log(user.permalink); // => peter
-	});
+var User = mongoose.model('User', userSchema);
 
-	//if permalink already exists unique ID will be added
-	var user2 = new User({
-		name: 'Peter'
-	});
+var user = new User({
+	name: 'Zlatko'
+});
 
-	user2.save(function(err, user) {
-		console.log(user.permalink); // => peter-3bqk9my9buecut
-	});
+user.save(function(err, user) {
+	console.log(user.permalink); // => zlatko
+});
+
+//if permalink already exists unique ID will be added
+var user2 = new User({
+	name: 'Zlatko'
+});
+
+user2.save(function(err, user) {
+	console.log(user.permalink); // => zlatko-3bqk9my9buecut
+});
+```
 
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Zlatko Fedor zlatkofedor@cherrysro.com
+Copyright (c) 2015 Zlatko Fedor zlatkofedor@cherrysro.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
